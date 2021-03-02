@@ -19,6 +19,7 @@ public class BasePage {
 
     }
 
+
     public void waitForVisibilityOfElement(WebElement element, int time) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, time);
@@ -34,13 +35,13 @@ public class BasePage {
         return element.getText();
     }
 
-    public void openURL(String URL) {
-        driver.get(URL);
+    public void getURL(String urlString) {
+        driver.get(urlString);
     }
 
-    public void clickOnElement(WebElement element) {
+    public void clickOnVisibleElement(By element) {
         waitForVisibilityOfElement(element, 100);
-        element.click();
+         driver.findElement(element).click();
     }
 
     public void sendKeys(WebElement element, String string) {
@@ -55,7 +56,7 @@ public class BasePage {
     }
 
     public ArrayList<Double> getPrices(List<WebElement> list) {
-        ArrayList<Double> prices = new ArrayList<Double>();
+        ArrayList<Double> prices = new ArrayList();
         for (WebElement e : list) {
             String s = e.getText().replaceAll("[^0-9]", "");
             double i = Double.parseDouble(s);
@@ -112,3 +113,4 @@ public class BasePage {
         }
     }
 }
+

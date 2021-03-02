@@ -1,7 +1,7 @@
 package pages;
 
 import base.BasePage;
-import com.sun.tools.javac.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,25 +9,36 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainPage extends BasePage {
+
     public WebDriver driver;
 
 
     public MainPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    @FindBy (css = "#nav-logo")
-    private WebElement element;
-    @FindBy (css = "#twotabsearchtextbox")
-    private WebElement SearchField;
-    @FindBy (css = "#nav-search-submit-text")
+    /*@FindBy (css = "#nav-logo")
+    private WebElement element;*/
+    By SearchField = By.cssSelector("#twotabsearchtextbox");
+    /*private WebElement ;*/
+    By SearchButton = By.cssSelector("#nav-search-submit-text");
+    By Prices = By.xpath("//span[@class=\"a-offscreen\"]");
+    String urlString = "https://www.amazon.com/";
+    /*@FindBy (css = "#nav-search-submit-text")
     private WebElement SearchButton;
+
     @FindBy (xpath = "//span[@class=\"a-offscreen\"]")
-    private List<WebElement> Prices;
+    private List<WebElement> Prices;*/
+    public MainPage getPage(){
+        getURL(urlString);
+        return this;
+    }
 
     private void clickSearchField() {
-        clickOnElement(SearchField);
+        clickOnVisibleElement(SearchField);
     }
 
     private void typeSearchField(String query) {
@@ -37,7 +48,7 @@ public class MainPage extends BasePage {
     }
 
     private void clickSearchButton() {
-        clickOnElement(SearchButton);
+        clickOnVisibleElement(SearchButton);
 
     }
 
@@ -47,15 +58,16 @@ public class MainPage extends BasePage {
         clickSearchButton();
 
     }
-    private ArrayList<Double> getPrices() {
-        return getPrices(Prices);
+    public ArrayList<Double> getPrices() {
+        ArrayList<Double> PricesList = getPrices();
+        return PricesList;
     }
 
     public void showPrices() {
         showPrices(getPrices());
     }
 
-    /*public void showPrices(ArrayList<Double> prices, double limit) {
+   /* public void showPrices(ArrayList<Double> prices, double limit) {
         showPrices(getPrices(), limit);
     }*/
 
@@ -75,7 +87,7 @@ public class MainPage extends BasePage {
     }
     }
 
-   /* private void searchLowPrices(double limit, String search) {
+   /*private void searchLowPrices(double limit, String search) {
         this.typeSearchField(SearchData.SEARCH_DATA.getSearchdata());
         this.clickSearchButton();
         this.sumOfPricesLower(20.00);

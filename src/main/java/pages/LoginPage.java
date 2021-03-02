@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
     private WebElement signInButton;
 
     public void clickSignInButton() {
-        clickOnElement(signInButton);
+        clickOnVisibleElement((By) signInButton);
 
     }
 
@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
     }
 
     public void clickContinueForUserEmailButton() {
-        clickOnElement(continueForUserEmailButton);
+        clickOnVisibleElement((By) continueForUserEmailButton);
     }
 
     public void typeUserPassword(String string) {
@@ -43,7 +43,7 @@ public class LoginPage extends BasePage {
     }
 
     public void clickSignInSubmitButton() {
-        clickOnElement(signInSubmitButton);
+        clickOnVisibleElement((By) signInSubmitButton);
 
     }
 

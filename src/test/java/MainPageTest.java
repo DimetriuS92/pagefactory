@@ -13,7 +13,7 @@ public class MainPageTest extends BaseTest {
     public void showPricesTest() {
         mainPage = new MainPage(getDriver());
         basePage = new BasePage();
-        basePage.openURL("https://www.amazon.com/");
+        basePage.getURL("https://www.amazon.com/");
         mainPage.startSearch(query);
         mainPage.showPrices();
     }
@@ -21,7 +21,7 @@ public class MainPageTest extends BaseTest {
     public void showSumPricesTest() {
         mainPage = new MainPage(getDriver());
         basePage = new BasePage();
-        basePage.openURL("https://www.amazon.com/");
+        basePage.getURL("https://www.amazon.com/");
         mainPage.startSearch(query);
         mainPage.PricesSum(limit);
     }

@@ -18,7 +18,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
+        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors","--add-exports");
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
