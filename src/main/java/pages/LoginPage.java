@@ -14,7 +14,14 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    @FindBy (css = "#ap_email")
+
+    By userEmailField = By.cssSelector("#ap_email");
+    By continueForUserEmailButton = By.xpath("//div/span/span/input[@id=\"continue\"]");
+    By userPasswordField = By.cssSelector("#ap_password");
+    By signInSubmitButton = By.cssSelector("#signInSubmit");
+    By signInButton = By.cssSelector("#nav-link-accountList");
+
+    /*@FindBy (css = "#ap_email")
     private WebElement userEmailField;
     @FindBy (xpath = "//div/span/span/input[@id=\"continue\"]")
     private WebElement continueForUserEmailButton;
@@ -23,7 +30,7 @@ public class LoginPage extends BasePage {
     @FindBy(css = "#signInSubmit")
     private WebElement signInSubmitButton;
     @FindBy(css = "#nav-link-accountList")
-    private WebElement signInButton;
+    private WebElement signInButton;*/
 
     public void clickSignInButton() {
         clickOnVisibleElement((By) signInButton);

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.lang.model.util.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,29 +18,33 @@ public class MainPage extends BasePage {
 
 
     public MainPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+    String urlString = "https://www.amazon.com/";
     /*@FindBy (css = "#nav-logo")
     private WebElement element;*/
     By SearchField = By.cssSelector("#twotabsearchtextbox");
     /*private WebElement ;*/
     By SearchButton = By.cssSelector("#nav-search-submit-text");
-    By Prices = By.xpath("//span[@class=\"a-offscreen\"]");
-    String urlString = "https://www.amazon.com/";
+   /* By Prices = By.xpath("//span[@class=\"a-offscreen\"]");*/
+    List<WebElement> Prices = driver.findElements(By.xpath("//span[@class=\"a-offscreen\"]"));
+
+
+
+
     /*@FindBy (css = "#nav-search-submit-text")
     private WebElement SearchButton;
 
     @FindBy (xpath = "//span[@class=\"a-offscreen\"]")
     private List<WebElement> Prices;*/
-    public MainPage getPage(){
+    public MainPage getPage() {
         getURL(urlString);
         return this;
     }
 
-    private void clickSearchField() {
+    /*private void clickSearchField() {
         clickOnVisibleElement(SearchField);
-    }
+    }*/
 
     private void typeSearchField(String query) {
         System.out.println("Enter name of query search: " + query);
@@ -53,11 +58,12 @@ public class MainPage extends BasePage {
     }
 
     public void startSearch(String query) {
-        clickSearchField();
+        /*clickSearchField();*/
         typeSearchField(query);
         clickSearchButton();
 
     }
+
     public ArrayList<Double> getPrices() {
         ArrayList<Double> PricesList = getPrices();
         return PricesList;
@@ -71,12 +77,12 @@ public class MainPage extends BasePage {
         showPrices(getPrices(), limit);
     }*/
 
-    public void PricesSum(double limit){
+    public void PricesSum(double limit) {
         double sum = 0;
-        for (WebElement Price: Prices) {
+        for (WebElement Price : Prices) {
             String s = Price.getText().replaceAll("[^0-9]", "");
             double priceLower20 = Double.parseDouble(s);
-            if (priceLower20>limit){
+            if (priceLower20 > limit) {
                 sum = sum + priceLower20;
             }
         }
@@ -85,7 +91,7 @@ public class MainPage extends BasePage {
         } else
             System.out.println("Price sum " + sum + " $");
     }
-    }
+}
 
    /*private void searchLowPrices(double limit, String search) {
         this.typeSearchField(SearchData.SEARCH_DATA.getSearchdata());
