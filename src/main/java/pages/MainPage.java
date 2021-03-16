@@ -20,26 +20,29 @@ public class MainPage extends BasePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    /*@FindBy (css = "#nav-logo")
-    private WebElement element;*/
-    By SearchField = By.cssSelector("#twotabsearchtextbox");
-    /*private WebElement ;*/
-    By SearchButton = By.cssSelector("#nav-search-submit-text");
-    By Prices = By.xpath("//span[@class=\"a-offscreen\"]");
+    @FindBy (css = "#nav-logo")
+    private WebElement element;
     String urlString = "https://www.amazon.com/";
-    /*@FindBy (css = "#nav-search-submit-text")
+    @FindBy (css = "#nav-search-submit-text")
     private WebElement SearchButton;
+    @FindBy (css = "#twotabsearchtextbox")
+    private WebElement SearchField;
 
     @FindBy (xpath = "//span[@class=\"a-offscreen\"]")
-    private List<WebElement> Prices;*/
+    private List<WebElement> Prices;
+
     public MainPage getPage(){
         getURL(urlString);
         return this;
+    }
+    private void clickOnVisibleElement(WebElement searchField) {
     }
 
     private void clickSearchField() {
         clickOnVisibleElement(SearchField);
     }
+
+
 
     private void typeSearchField(String query) {
         System.out.println("Enter name of query search: " + query);
@@ -52,12 +55,7 @@ public class MainPage extends BasePage {
 
     }
 
-    public void startSearch(String query) {
-        clickSearchField();
-        typeSearchField(query);
-        clickSearchButton();
 
-    }
     public ArrayList<Double> getPrices() {
         ArrayList<Double> PricesList = getPrices();
         return PricesList;
@@ -84,6 +82,12 @@ public class MainPage extends BasePage {
             System.out.println("No Such items");
         } else
             System.out.println("Price sum " + sum + " $");
+    }
+    public void startSearch(String query) {
+        clickSearchField();
+        typeSearchField(query);
+        clickSearchButton();
+
     }
     }
 

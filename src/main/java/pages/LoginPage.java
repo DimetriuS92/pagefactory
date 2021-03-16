@@ -26,8 +26,10 @@ public class LoginPage extends BasePage {
     private WebElement signInButton;
 
     public void clickSignInButton() {
-        clickOnVisibleElement((By) signInButton);
+        clickOnVisibleElement(signInButton);
 
+    }
+    private void clickOnVisibleElement(WebElement continueForUserEmailButton) {
     }
 
     public void typeUserEmail (String string) {
@@ -35,15 +37,17 @@ public class LoginPage extends BasePage {
     }
 
     public void clickContinueForUserEmailButton() {
-        clickOnVisibleElement((By) continueForUserEmailButton);
+        clickOnVisibleElement(continueForUserEmailButton);
     }
+
+
 
     public void typeUserPassword(String string) {
         sendKeys(userPasswordField, string);
     }
 
     public void clickSignInSubmitButton() {
-        clickOnVisibleElement((By) signInSubmitButton);
+        clickOnVisibleElement(signInSubmitButton);
 
     }
 

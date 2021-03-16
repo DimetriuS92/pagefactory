@@ -39,10 +39,10 @@ public class BasePage {
         driver.get(urlString);
     }
 
-    public void clickOnVisibleElement(By element) {
+   /* public void clickOnVisibleElement(WebElement element) {
         waitForVisibilityOfElement(element, 100);
          driver.findElement(element).click();
-    }
+    }*/
 
     public void sendKeys(WebElement element, String string) {
         waitForVisibilityOfElement(element, 100);
