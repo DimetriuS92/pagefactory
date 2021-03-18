@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import javax.lang.model.util.Elements;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +26,9 @@ public class MainPage extends BasePage {
     By SearchField = By.cssSelector("#twotabsearchtextbox");
     /*private WebElement ;*/
     By SearchButton = By.cssSelector("#nav-search-submit-text");
-   /* By Prices = By.xpath("//span[@class=\"a-offscreen\"]");*/
-    List<WebElement> Prices = driver.findElements(By.xpath("//span[@class=\"a-offscreen\"]"));
-
+    /* By Prices = By.xpath("//span[@class=\"a-offscreen\"]");*/
+    /*List<WebElement> Prices = driver.findElements(By.xpath("//span[@class=\"a-offscreen\"]"));*/
+    By sumprices = By.xpath("//span[@class=\"a-offscreen\"]");
 
 
 
@@ -64,20 +64,14 @@ public class MainPage extends BasePage {
 
     }
 
-    public ArrayList<Double> getPrices() {
-        ArrayList<Double> PricesList = getPrices();
-        return PricesList;
-    }
 
-    public void showPrices() {
-        showPrices(getPrices());
-    }
 
    /* public void showPrices(ArrayList<Double> prices, double limit) {
         showPrices(getPrices(), limit);
     }*/
 
     public void PricesSum(double limit) {
+        List<WebElement> Prices = driver.findElements(sumprices);
         double sum = 0;
         for (WebElement Price : Prices) {
             String s = Price.getText().replaceAll("[^0-9]", "");
@@ -91,6 +85,24 @@ public class MainPage extends BasePage {
         } else
             System.out.println("Price sum " + sum + " $");
     }
+    public ArrayList<Double> getPrices() {
+        return getPricesList(sumprices);
+    }
+
+    public void showPrices() {
+        showPrices(getPrices());
+    }
+    /*private ArrayList<Integer> getSaturnPrices() {
+        return getPrices(saturnPrices);
+    }
+
+    public void showSaturnPrices() {
+        showPrices(getSaturnPrices());
+    }
+
+    public void showSaturnPricesSum(int limit) {
+        showPricesSum(getSaturnPrices(), limit);
+    }*/
 }
 
    /*private void searchLowPrices(double limit, String search) {

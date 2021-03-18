@@ -55,10 +55,10 @@ public class BasePage {
         }
     }
 
-    public ArrayList<Double> getPrices(List<WebElement> list) {
+    public ArrayList<Double> getPricesList(By list) {
         ArrayList<Double> prices = new ArrayList();
-        for (WebElement e : list) {
-            String s = e.getText().replaceAll("[^0-9]", "");
+        for (Double e : prices) {
+            String s = e.toString().replaceAll("[^0-9]", "");
             double i = Double.parseDouble(s);
             prices.add(i);
         }
