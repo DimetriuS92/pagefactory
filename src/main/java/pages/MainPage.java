@@ -12,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Double.parseDouble;
+
 public class MainPage extends BasePage {
 
     public WebDriver driver;
@@ -75,7 +77,7 @@ public class MainPage extends BasePage {
         double sum = 0;
         for (WebElement Price : Prices) {
             String s = Price.getText().replaceAll("[^0-9]", "");
-            double priceLower20 = Double.parseDouble(s);
+            double priceLower20 = parseDouble(s);
             if (priceLower20 > limit) {
                 sum = sum + priceLower20;
             }
