@@ -76,8 +76,8 @@ public class MainPage extends BasePage {
         List<WebElement> Prices = driver.findElements(sumprices);
         double sum = 0;
         for (WebElement Price : Prices) {
-            String s = Price.getText().replaceAll("[^0-9]", "");
-            double priceLower20 = parseDouble(s);
+            String priceCase = Price.getAttribute("innerHTML").replaceAll("[$A-Za-z]", "");
+            double priceLower20 = parseDouble(priceCase);
             if (priceLower20 > limit) {
                 sum = sum + priceLower20;
             }

@@ -28,7 +28,7 @@ public class BaseTest {
 
 
 
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         WEBDRIVER_CONTAINER.set(driver);
 
