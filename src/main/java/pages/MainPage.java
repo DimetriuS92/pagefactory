@@ -2,14 +2,13 @@ package pages;
 
 import base.BasePage;
 
-import org.openqa.selenium.By;
+import com.sun.tools.javac.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainPage extends BasePage {
 
@@ -54,16 +53,17 @@ public class MainPage extends BasePage {
         clickOnVisibleElement(SearchButton);
 
     }
+    public void startSearch(String query) {
+        /*clickSearchField();*/
+        typeSearchField(query);
+        clickSearchButton();
 
-
-    public ArrayList<Double> getPrices() {
-        ArrayList<Double> PricesList = getPrices();
-        return PricesList;
     }
 
-    public void showPrices() {
-        showPrices(getPrices());
-    }
+
+
+
+
 
    /* public void showPrices(ArrayList<Double> prices, double limit) {
         showPrices(getPrices(), limit);
@@ -72,8 +72,8 @@ public class MainPage extends BasePage {
     public void PricesSum(double limit){
         double sum = 0;
         for (WebElement Price: Prices) {
-            String s = Price.getText().replaceAll("[^0-9]", "");
-            double priceLower20 = Double.parseDouble(s);
+            String priceCase = Price.getAttribute("innerHTML").replaceAll("[$A-Za-z]", "");
+            double priceLower20 = Double.parseDouble(priceCase);
             if (priceLower20>limit){
                 sum = sum + priceLower20;
             }
@@ -83,12 +83,19 @@ public class MainPage extends BasePage {
         } else
             System.out.println("Price sum " + sum + " $");
     }
-    public void startSearch(String query) {
+    public ArrayList<Double> getPrices() {
+        return getPricesList(Prices);
+    }
+
+    public void showPrices() {
+        showPrices(getPrices());
+    }
+    /*public void startSearch(String query) {
         clickSearchField();
         typeSearchField(query);
         clickSearchButton();
 
-    }
+    }*/
     }
 
    /*private void searchLowPrices(double limit, String search) {

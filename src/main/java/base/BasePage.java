@@ -55,10 +55,10 @@ public class BasePage {
         }
     }
 
-    public ArrayList<Double> getPrices(List<WebElement> list) {
+    public ArrayList<Double> getPricesList(List<WebElement> list) {
         ArrayList<Double> prices = new ArrayList();
         for (WebElement e : list) {
-            String s = e.getText().replaceAll("[^0-9]", "");
+            String s = e.toString().replaceAll("[^0-9]", "");
             double i = Double.parseDouble(s);
             prices.add(i);
         }
@@ -67,7 +67,7 @@ public class BasePage {
 
 
     public void showPricesSum(List<Double> list, double limit) {
-        int sum = 0;
+        double sum = 0;
         for (double i : list) {
             if (i > limit) {
                 sum += i;
@@ -92,7 +92,7 @@ public class BasePage {
         }
     }
 
-    public void clickOnElement(By locator) {
+    public void clickOnVisibleElement(By locator) {
         waitForVisibilityOfElement(locator, 100);
         driver.findElement(locator).click();
     }
