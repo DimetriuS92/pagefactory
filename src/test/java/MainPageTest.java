@@ -17,6 +17,7 @@ public class MainPageTest extends BaseTest {
         mainPage.startSearch(query);
         mainPage.showPrices();
     }
+
     @Test
     public void showSumPricesTest() {
         mainPage = new MainPage(getDriver());

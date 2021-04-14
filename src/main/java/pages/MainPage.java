@@ -22,6 +22,7 @@ public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
+
     String urlString = "https://www.amazon.com/";
     /*@FindBy (css = "#nav-logo")
     private WebElement element;*/
@@ -31,7 +32,6 @@ public class MainPage extends BasePage {
     /* By Prices = By.xpath("//span[@class=\"a-offscreen\"]");*/
     /*List<WebElement> Prices = driver.findElements(By.xpath("//span[@class=\"a-offscreen\"]"));*/
     By sumprices = By.xpath("//span[@class=\"a-offscreen\"]");
-
 
 
     /*@FindBy (css = "#nav-search-submit-text")
@@ -87,6 +87,7 @@ public class MainPage extends BasePage {
         } else
             System.out.println("Price sum " + sum + " $");
     }
+
     public ArrayList<Double> getPrices() {
         return getPricesList(sumprices);
     }

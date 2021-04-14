@@ -42,7 +42,7 @@ public class BasePage {
 
     public void clickOnVisibleElement(By element) {
         waitForVisibilityOfElement(element, 100);
-         driver.findElement(element).click();
+        driver.findElement(element).click();
     }
 
     public void sendKeys(WebElement element, String string) {

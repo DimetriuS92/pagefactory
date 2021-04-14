@@ -17,15 +17,14 @@ public class BaseTest {
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal();*/
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
 
         WebDriverManager.chromedriver().setup();
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
+        options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200", "--ignore-certificate-errors");
         //options.setHeadless(true);
-
 
 
         driver = new ChromeDriver();
@@ -33,10 +32,9 @@ public class BaseTest {
         WEBDRIVER_CONTAINER.set(driver);
 
 
-
-
     }
-    public static WebDriver getDriver(){
+
+    public static WebDriver getDriver() {
         return WEBDRIVER_CONTAINER.get();
     }
 
@@ -55,9 +53,9 @@ public class BaseTest {
     }*/
     @AfterMethod
 
-    public void quit(){
+    public void quit() {
 
-        if (driver !=null){
+        if (driver != null) {
             driver.manage().deleteAllCookies();
             driver.quit();
             WEBDRIVER_CONTAINER.remove();
@@ -72,7 +70,7 @@ public class BaseTest {
     public void tearDown() {
         driver.quit();*/
 
-    }
+}
     /*public static WebDriver getDriver() {
         return DRIVER.get();
     }*/
